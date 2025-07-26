@@ -7,7 +7,9 @@ const ActiveUsers = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/allusers')
+    const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api";
+
+    axios.get( `${baseUrl}/allusers`)
       .then(res => setUsers(res?.data))
       .catch(err => console.error(err));
   }, []);
