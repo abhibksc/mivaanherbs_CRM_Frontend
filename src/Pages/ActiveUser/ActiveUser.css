@@ -1,0 +1,39 @@
+.active-users-container {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 5.2rem; /* assuming navbar height */
+  left: 15rem; /* assuming sidebar width */
+  width: calc(100% - 15rem);
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.active-users-heading {
+  color: black;
+  padding: 1rem;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.active-users-table {
+  margin: 10px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0;
+}
+.active-users-table thead tr th{
+  background-color: blue;
+}
+.active-users-table th,
+.active-users-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+  vertical-align: top;
+}
+
+.active-users-table th {
+  background-color: #f2f2f2;
+}

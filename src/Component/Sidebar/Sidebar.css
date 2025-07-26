@@ -1,0 +1,33 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: rgb(31, 24, 86);
+  color: white;
+  position: fixed;
+  top: 5.2rem;
+  left: 0;
+}
+
+.nav-menu {
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.nav-data {
+  display: flex;
+  gap: 15px;
+  font-size: 1rem;
+  padding: 15px 30px;
+}
+
+.nav-data a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-data a:hover {
+  color: rgb(181, 181, 248);
+}

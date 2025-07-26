@@ -1,0 +1,48 @@
+.manage-orders-container {
+  margin: 10px;
+  padding: 10px;
+  position: absolute;
+  top: 5.2rem; /* assuming navbar height */
+  left: 15rem; /* assuming sidebar width */
+  width: calc(100% - 15rem);
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.orders-table th {
+  background-color: #2c3e50;
+  color: white;
+}
+
+.status-btn,
+.action-btn {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.status-btn.shipped {
+  background-color: green;
+}
+
+.status-btn.pending {
+  background-color: orange;
+}
+
+.action-btn {
+  background-color: #2980b9;
+}
