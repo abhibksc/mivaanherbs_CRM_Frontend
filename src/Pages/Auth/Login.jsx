@@ -17,7 +17,7 @@ function Login({ setIsAuthenticated }) {
       localStorage.setItem("Admin_token", res.data.token);
       localStorage.setItem("isAdminAuthenticated", true);
 
-      setIsAuthenticated(true);
+    setIsAuthenticated(true);
     navigate("/dashboard");
 
       window.location.href = "/dashboard";
