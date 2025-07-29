@@ -1,39 +1,68 @@
 .active-users-container {
-  margin: 0;
-  padding: 0;
   position: absolute;
-  top: 5.2rem; /* assuming navbar height */
-  left: 15rem; /* assuming sidebar width */
+  top: 5.2rem; /* navbar height */
+  left: 15rem; /* sidebar width */
   width: calc(100% - 15rem);
-  background-color: #f9f9f9;
   min-height: 100vh;
+  padding: 1rem 2rem;
+  background-color: #f5f7fa;
+  font-family: "Inter", -apple-system, Helvetica, Arial, sans-serif;
+  overflow-x: auto;
 }
 
 .active-users-heading {
-  color: black;
-  padding: 1rem;
-  margin: 0;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
 }
 
 .active-users-table {
-  margin: 10px;
   width: 100%;
   border-collapse: collapse;
-  margin-top: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
 }
-.active-users-table thead tr th{
-  background-color: blue;
+
+.active-users-table thead {
+  background-color: #3b82f6; /* Tailwind's blue-500 */
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
+
 .active-users-table th,
 .active-users-table td {
-  padding: 12px;
+  padding: 0.85rem 1rem;
   text-align: left;
-  border-bottom: 1px solid #ddd;
-  font-size: 15px;
-  vertical-align: top;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.active-users-table tbody tr:hover {
+  background-color: #f0f4f8;
+  transition: background-color 0.3s ease;
 }
 
 .active-users-table th {
-  background-color: #f2f2f2;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+  .active-users-container {
+    left: 0;
+    width: 100%;
+    top: 4.5rem;
+    padding: 1rem;
+  }
+
+  .active-users-table th,
+  .active-users-table td {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
 }

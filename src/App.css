@@ -1,17 +1,50 @@
-body, html, #root {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-}
-
+/* App.css */
 .app-container {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+}
+
+.sidebar-content {
+  display: flex;
+  flex: 1;
+  padding-top: 4rem; /* Height of navbar */
+}
+
+.sidebar {
+  width: 16rem; /* 256px */
+  background-color: #111827; /* Gray-900 */
+  color: white;
+  position: fixed;
+  top: 4rem;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
 }
 
 .main-content {
-  margin-left: 250px;
-  margin-top: 5.2rem;
-  padding: 20px;
+  flex: 1;
+  margin-left: 16rem; /* same as sidebar width */
+  padding: 1.5rem;
+  background-color: #f3f4f6; /* Gray-100 */
+  min-height: calc(100vh - 4rem);
+}
+
+/* Login background image */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #eee4e4; /* fallback red */
+  background-size: cover;
+  background-position: center;
 }

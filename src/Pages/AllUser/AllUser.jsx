@@ -6,13 +6,19 @@ import moment from 'moment';
 const ActiveUsers = () => {
   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api";
+useEffect(() => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api";
 
-    axios.get( `${baseUrl}/allusers`)
-      .then(res => setUsers(res?.data))
-      .catch(err => console.error(err));
-  }, []);
+  axios.get(`${baseUrl}/admin/allusers`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem('Admin_token')}`
+    }
+  })
+    .then(res => setUsers(res?.data))
+    .catch(err => console.error(err));
+}, []);
+
 
   const formatValue = (key, value) => {
     if (key.toLowerCase().includes('date') || key.toLowerCase().includes('joined')) {

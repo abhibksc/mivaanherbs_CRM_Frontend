@@ -1,24 +1,29 @@
 import React from "react";
 import { SidebarData } from "./SidebarData";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.css";
 
 function Sidebar() {
+  const location = useLocation();
+
   return (
-    <div className="sidebar">
+    <aside className="sidebar">
       <nav className="nav-menu">
-        {SidebarData.map((item, index) => (
-          <div className="nav-data" key={index}>
-            <p>
-              <Link to={item.path}>{item.icon}</Link>
-            </p>
-            <p>
-              <Link to={item.path}>{item.title}</Link>
-            </p>
-          </div>
-        ))}
+        {SidebarData.map((item, index) => {
+          const isActive = location.pathname === item.path;
+          return (
+            <Link
+              key={index}
+              to={item.path}
+              className={`nav-link ${isActive ? "active" : ""}`}
+            >
+              <div className="icon">{item.icon}</div>
+              <span className="title">{item.title}</span>
+            </Link>
+          );
+        })}
       </nav>
-    </div>
+    </aside>
   );
 }
 
