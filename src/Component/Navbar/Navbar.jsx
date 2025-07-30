@@ -1,13 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { IoMdDownload } from "react-icons/io";
-import { IoIosNotifications } from "react-icons/io";
-import { TbSettingsPin } from "react-icons/tb";
 import { IoMdLogOut } from "react-icons/io";
 import { LiaSearchSolid } from "react-icons/lia";
-import "./Navbar.css";
 
-function Navbar({setIsAuthenticated }) {
+function Navbar({ setIsAuthenticated }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -17,25 +13,27 @@ function Navbar({setIsAuthenticated }) {
   };
 
   return (
-    <nav className="navbar">
-      <div className="navbar-left">
-        <div className="logo">
-          <h1>Mivaan</h1>
-          <p>Hearbs Pvt .Ltd</p>
+    <nav className="bg-blue-800 text-white shadow-lg px-6 py-2 flex justify-between items-center">
+      {/* Left Side */}
+      <div className="flex items-center gap-6">
+        {/* Logo */}
+        <div>
+          <h1 className="text-2xl font-extrabold text-white tracking-wide">Mivaan</h1>
+          <p className="text-sm text-[#ccebdc] -mt-1">Herbs Pvt. Ltd</p>
         </div>
-        <div className="search">
-          <label>
-            <LiaSearchSolid />
-          </label>
-          <input type="text" placeholder="Search Here..." />
-        </div>
+
       </div>
 
-       <ul className="nav-icons">
-        <li onClick={handleLogout} title="Logout" style={{ cursor: "pointer" }}>
-          <IoMdLogOut />
-        </li>
-      </ul>
+      {/* Right Side Icons */}
+      <div className="flex items-center gap-4">
+        <button
+          onClick={handleLogout}
+          title="Logout"
+          className="p-2 rounded-full hover:bg-white hover:text-[#157347] transition duration-200"
+        >
+          <IoMdLogOut size={22} />
+        </button>
+      </div>
     </nav>
   );
 }

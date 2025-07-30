@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./Dashboard.css";
 import {
   FaUsers,
   FaUserCheck,
@@ -49,7 +48,6 @@ const Dashboard = () => {
       setEmailUnverified(userList.filter(user => !user.isVarified_email).length);
       setMobileUnverified(userList.filter(user => !user.isVarified_mobile).length);
 
-      // Optional/placeholder fields
       setWithdrawals(allUsersData.withdrawals || 0);
       setDeposits(allUsersData.total_package_sell || 0);
 
@@ -62,21 +60,19 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-const cards = [
-  { title: "Total Users", value: totalUsers, icon: <FaUsers />, link: "/users?filter=all" },
-  { title: "Active Users", value: activeUsers, icon: <FaUserCheck />, link: "/users?filter=active" },
-  { title: "Email Unverified", value: emailUnverified, icon: <FaEnvelopeOpenText />, link: "/users?filter=email-unverified" },
-  { title: "Mobile Unverified", value: mobileUnverified, icon: <FaPhoneAlt />, link: "/users?filter=mobile-unverified" },
-  // { title: "Total Income", value: `₹${totalIncome}`, icon: <FaDollarSign />, link: "/reports?type=income" },
-  { title: "Deposit", value: deposits, icon: <FaDollarSign />, link: "/transactions?type=deposit" },
-  { title: "Withdrawal", value: withdrawals, icon: <FaDollarSign />, link: "/transactions?type=withdrawal" },
-];
-
+  const cards = [
+    { title: "Total Users", value: totalUsers, icon: <FaUsers />, link: "/users?filter=all" },
+    { title: "Active Users", value: activeUsers, icon: <FaUserCheck />, link: "/users?filter=active" },
+    { title: "Email Unverified", value: emailUnverified, icon: <FaEnvelopeOpenText />, link: "/users?filter=email-unverified" },
+    { title: "Mobile Unverified", value: mobileUnverified, icon: <FaPhoneAlt />, link: "/users?filter=mobile-unverified" },
+    { title: "Deposit", value: deposits, icon: <FaDollarSign />, link: "/transactions?type=deposit" },
+    { title: "Withdrawal", value: withdrawals, icon: <FaDollarSign />, link: "/transactions?type=withdrawal" },
+  ];
 
   return (
-    <div className="dashboard-main">
-      <h1 className="dashboard-title">Dashboard</h1>
-      <div className="dashboard-cards">
+    <div className="px-4 py-6 sm:px-6 lg:px-8 bg-blue-100">
+      <h1 className="text-2xl font-bold text-gray-800 mb-6">Dashboard</h1>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {cards.map((card, index) => (
           <Card key={index} {...card} />
         ))}
@@ -86,17 +82,22 @@ const cards = [
 };
 
 const Card = ({ title, value, icon, link }) => (
-  <div className="dashboard-card">
-    <div className="card-content">
-      <h2>{title}</h2>
-      <p>{value}</p>
+  <div className="bg-white p-5 rounded-xl shadow hover:shadow-lg transition duration-300 border border-gray-100">
+    <div className="flex items-center justify-between">
+      <div>
+        <h2 className="text-gray-600 text-sm font-medium">{title}</h2>
+        <p className="text-2xl font-bold text-gray-900">{value}</p>
+      </div>
+      <div className="text-blue-600 text-3xl">
+        {icon}
+      </div>
     </div>
-    <div className="card-icons">
-      <Link to={link}>
-        <div className="icon">{icon}</div>
-      </Link>
-      <Link to={link}>
-        <FaArrowRight className="arrow" />
+    <div className="flex items-center justify-end mt-4">
+      <Link
+        to={link}
+        className="flex items-center text-sm text-blue-600 hover:underline font-medium"
+      >
+        View <FaArrowRight className="ml-1" />
       </Link>
     </div>
   </div>
