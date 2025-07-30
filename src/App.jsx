@@ -47,6 +47,7 @@ function App() {
                 <Route path="/active-users" element={<ProtectedRoute><ActiveUsers /></ProtectedRoute>} />
                 <Route path="/email-unverified" element={<ProtectedRoute><UnverifiedEmails /></ProtectedRoute>} />
                 <Route path="/mobile-unverified" element={<ProtectedRoute><UnverifiedMobiles /></ProtectedRoute>} />
+
               </Routes>
             </main>
           </div>
@@ -56,6 +57,12 @@ function App() {
           <Route path="*" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         </Routes>
       )}
+
+
+            <Routes>
+          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        </Routes>
+
     </Router>
   );
 }

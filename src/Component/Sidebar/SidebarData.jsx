@@ -12,4 +12,6 @@ export const SidebarData = [
   { title: "All Transactions", icon: <FaCartPlus />, path: "/all-transactions" },
   { title: "Recent Transactions", icon: <FaCartPlus />, path: "/recent-transactions" },
   { title: "Transaction Stats", icon: <FaChartBar />, path: "/transaction-stats" },
+  { title: "Logout", icon: <FaChartBar />, path: "/login" },
+
 ];
