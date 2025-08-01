@@ -35,6 +35,8 @@ const UserList = () => {
         }
 
         setUsers(filtered);
+        console.log(filtered);
+        
       })
       .catch(err => console.error(err));
   }, [filter]);
@@ -56,9 +58,9 @@ const UserList = () => {
     const status = !currentStatus;
 
     try {
-      await axios.patch(
-        `${baseUrl}/admin/user/${id}/status`,
-        { is_active: status },
+      await axios.post(
+        `${baseUrl}/admin/activate`,
+        { username: user.username },
         {
           headers: {
             "Content-Type": "application/json",
