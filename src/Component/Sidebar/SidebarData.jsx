@@ -4,6 +4,7 @@ import { FaCartPlus, FaUsers, FaHome, FaChartBar, FaMoneyCheckAlt } from "react-
 export const SidebarData = [
   { title: "Dashboard", icon: <FaHome />, path: "/dashboard" },
   { title: "Total Users", icon: <FaUsers />, path: "/users?filter=all" },
+  { title: "Generate Pin", icon: <FaUsers />, path: "/all-pincodes" },
   { title: "Total Income", icon: <FaMoneyCheckAlt />, path: "/total-income" },
   { title: "Income Summary", icon: <FaChartBar />, path: "/income-summary" },
   { title: "Recent Signups", icon: <FaUsers />, path: "/recent-signups" },
