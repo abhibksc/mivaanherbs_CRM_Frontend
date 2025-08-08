@@ -16,6 +16,7 @@ import AllPincodes from "./Pages/AllPincodes";
 import { Menu } from "lucide-react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import FundRequestList from "./Pages/FundRequest/FundRequestList";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("Admin_token"));
@@ -57,6 +58,8 @@ function App() {
               <Routes>
                 <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                <Route path="/fund-request" element={<ProtectedRoute><FundRequestList /></ProtectedRoute>} />
+
                 <Route path="/contact" element={<ProtectedRoute><Contact /></ProtectedRoute>} />
                 <Route path="/orders" element={<ProtectedRoute><ManageOrders /></ProtectedRoute>} />
                 <Route path="/users" element={<ProtectedRoute><UserList /></ProtectedRoute>} />
