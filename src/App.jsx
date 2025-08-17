@@ -4,7 +4,7 @@ import Sidebar from "./Component/Sidebar/Sidebar";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Contact from "./Pages/Contact/Contact";
 import ManageOrders from "./Pages/ManageOrder/ManageOrder";
-import AllUsers from "./Pages/AllUser/AllUser";
+// import AllUsers from "./Pages/AllUser/AllUser";
 import ActiveUsers from "./Pages/ActiveUser/ActiveUser";
 import UnverifiedEmails from "./Pages/UnverifiedEmail/UnverifiedEmail";
 import UnverifiedMobiles from "./Pages/UnverifiedMobile/UnverifiedMobile";
@@ -17,6 +17,9 @@ import { Menu } from "lucide-react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FundRequestList from "./Pages/FundRequest/FundRequestList";
+import ActivateUser from "./Pages/ActivateUser";
+import DeactivateUser from "./Pages/DeactivateUser";
+import ResumeUser from "./Pages/ResumeUser";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("Admin_token"));
@@ -44,7 +47,7 @@ function App() {
           {/* Main Content */}
           <div className="flex-1 flex flex-col overflow-y-auto">
             {/* Toggle button */}
-            <div className="md:hidden p-4 bg-white shadow-md flex items-center justify-between">
+            <div className="md:hidden p-4 bg-gradient-to-br from-blue-900 via-cyan-800 to-teal-900 shadow-md flex items-center justify-between">
               <button
                 className="text-gray-800"
                 onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -54,7 +57,7 @@ function App() {
               <span className="font-semibold text-lg">Mivaan Herbs Admin</span>
             </div>
 
-            <main className="p-4 sm:p-6 md:p-8 mt-2 md:mt-0">
+            <main className="p-4 sm:p-6 md:p-8 mt-2 md:mt-0 bg-gradient-to-br from-blue-900 via-cyan-800 to-teal-900">
               <Routes>
                 <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
@@ -63,11 +66,22 @@ function App() {
                 <Route path="/contact" element={<ProtectedRoute><Contact /></ProtectedRoute>} />
                 <Route path="/orders" element={<ProtectedRoute><ManageOrders /></ProtectedRoute>} />
                 <Route path="/users" element={<ProtectedRoute><UserList /></ProtectedRoute>} />
-                <Route path="/all-users" element={<ProtectedRoute><AllUsers /></ProtectedRoute>} />
+                {/* <Route path="/all-users" element={<ProtectedRoute><AllUsers /></ProtectedRoute>} /> */}
                 <Route path="/active-users" element={<ProtectedRoute><ActiveUsers /></ProtectedRoute>} />
                 <Route path="/email-unverified" element={<ProtectedRoute><UnverifiedEmails /></ProtectedRoute>} />
                 <Route path="/mobile-unverified" element={<ProtectedRoute><UnverifiedMobiles /></ProtectedRoute>} />
                 <Route path="/all-pincodes" element={<ProtectedRoute><AllPincodes /></ProtectedRoute>} />
+                <Route path="/activate-user" element={<ProtectedRoute><ActivateUser /></ProtectedRoute>} />
+                <Route path="/Deactivate-user" element={<ProtectedRoute><DeactivateUser /></ProtectedRoute>} />
+                <Route path="/re-activate-user" element={<ProtectedRoute><ResumeUser /></ProtectedRoute>} />
+
+
+                {/* Deactivate-user */}
+
+{/* activate-user */}
+
+                {/* <Route path="/total-income" element={<ProtectedRoute><ManageTotalIncome /></ProtectedRoute>} /> */}
+
               </Routes>
             </main>
           </div>

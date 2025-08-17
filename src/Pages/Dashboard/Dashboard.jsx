@@ -10,7 +10,8 @@ import {
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
-  const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api";
+  const baseUrl =
+    import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api";
   const token = localStorage.getItem("Admin_token");
 
   const [totalUsers, setTotalUsers] = useState(0);
@@ -45,12 +46,15 @@ const Dashboard = () => {
       setTotalUsers(usersData.totalUsers || 0);
       setActiveUsers(activeData.activeUsers || 0);
       setTotalIncome(incomeData.totalIncome || 0);
-      setEmailUnverified(userList.filter(user => !user.isVarified_email).length);
-      setMobileUnverified(userList.filter(user => !user.isVarified_mobile).length);
+      setEmailUnverified(
+        userList.filter((user) => !user.isVarified_email).length
+      );
+      setMobileUnverified(
+        userList.filter((user) => !user.isVarified_mobile).length
+      );
 
       setWithdrawals(allUsersData.withdrawals || 0);
       setDeposits(allUsersData.total_package_sell || 0);
-
     } catch (err) {
       console.error("Dashboard data fetch failed:", err);
     }
@@ -61,18 +65,56 @@ const Dashboard = () => {
   }, []);
 
   const cards = [
-    { title: "Total Users", value: totalUsers, icon: <FaUsers />, link: "/users?filter=all" },
-    { title: "Active Users", value: activeUsers, icon: <FaUserCheck />, link: "/users?filter=active" },
-    { title: "Email Unverified", value: emailUnverified, icon: <FaEnvelopeOpenText />, link: "/users?filter=email-unverified" },
-    { title: "Mobile Unverified", value: mobileUnverified, icon: <FaPhoneAlt />, link: "/users?filter=mobile-unverified" },
-    { title: "Deposit", value: deposits, icon: <FaDollarSign />, link: "/transactions?type=deposit" },
-    { title: "Withdrawal", value: withdrawals, icon: <FaDollarSign />, link: "/transactions?type=withdrawal" },
+    {
+      title: "Total Users",
+      value: totalUsers,
+      icon: <FaUsers />,
+      link: "/users?filter=all",
+      gradient: "from-indigo-500 to-purple-500",
+    },
+    {
+      title: "Active Users",
+      value: activeUsers,
+      icon: <FaUserCheck />,
+      link: "/users?filter=active",
+      gradient: "from-green-400 to-emerald-600",
+    },
+    {
+      title: "Email Unverified",
+      value: emailUnverified,
+      icon: <FaEnvelopeOpenText />,
+      link: "/users?filter=email-unverified",
+      gradient: "from-yellow-400 to-orange-500",
+    },
+    {
+      title: "Mobile Unverified",
+      value: mobileUnverified,
+      icon: <FaPhoneAlt />,
+      link: "/users?filter=mobile-unverified",
+      gradient: "from-pink-500 to-rose-600",
+    },
+    {
+      title: "Deposit",
+      value: deposits,
+      icon: <FaDollarSign />,
+      link: "/transactions?type=deposit",
+      gradient: "from-blue-500 to-cyan-500",
+    },
+    {
+      title: "Withdrawal",
+      value: withdrawals,
+      icon: <FaDollarSign />,
+      link: "/transactions?type=withdrawal",
+      gradient: "from-red-500 to-orange-600",
+    },
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 lg:px-8 bg-blue-100">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Dashboard</h1>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="px-6 py-8 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      <h1 className="text-4xl font-extrabold text-gray-800 mb-10 tracking-tight">
+        📊 Dashboard
+      </h1>
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {cards.map((card, index) => (
           <Card key={index} {...card} />
         ))}
@@ -81,24 +123,33 @@ const Dashboard = () => {
   );
 };
 
-const Card = ({ title, value, icon, link }) => (
-  <div className="bg-white p-5 rounded-xl shadow hover:shadow-lg transition duration-300 border border-gray-100">
-    <div className="flex items-center justify-between">
-      <div>
-        <h2 className="text-gray-600 text-sm font-medium">{title}</h2>
-        <p className="text-2xl font-bold text-gray-900">{value}</p>
+const Card = ({ title, value, icon, link, gradient }) => (
+  <div
+    className={`relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2`}
+  >
+    {/* Gradient background */}
+    <div
+      className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-90`}
+    ></div>
+
+    {/* Content */}
+    <div className="relative z-10 p-6 flex flex-col justify-between h-full text-white">
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-sm font-medium opacity-90">{title}</h2>
+          <p className="text-3xl font-bold">{value}</p>
+        </div>
+        <div className="text-5xl opacity-80">{icon}</div>
       </div>
-      <div className="text-blue-600 text-3xl">
-        {icon}
+
+      <div className="flex justify-end mt-6">
+        <Link
+          to={link}
+          className="flex items-center text-sm font-semibold bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition"
+        >
+          View <FaArrowRight className="ml-2" />
+        </Link>
       </div>
-    </div>
-    <div className="flex items-center justify-end mt-4">
-      <Link
-        to={link}
-        className="flex items-center text-sm text-blue-600 hover:underline font-medium"
-      >
-        View <FaArrowRight className="ml-1" />
-      </Link>
     </div>
   </div>
 );

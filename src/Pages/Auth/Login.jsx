@@ -36,7 +36,8 @@ function Login({ setIsAuthenticated }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-blue-100 flex items-center justify-center px-4">
+<div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-800 to-fuchsia-900 flex items-center justify-center px-4">
+
       <div className="bg-white shadow-xl rounded-2xl w-full max-w-md p-8 sm:p-10">
         <h2 className="text-3xl font-bold text-center text-blue-600 mb-6">
           Admin Login
