@@ -71,12 +71,7 @@ const UserList = () => {
     { key: "active", label: "Active" },
     { key: "is_Deactive", label: "De-Activate" },
     { key: "deactivate_reason", label: "De-Activate Reason" },
-
-    
-
-    { key: "isVarified_email", label: "Email Verified" },
-    { key: "isVarified_mobile", label: "Mobile Verified" },
-    { key: "createdAt", label: "Joined On" },
+    { key: "joined_at", label: "Joined On" },
   ];
 
   return (
