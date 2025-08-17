@@ -20,6 +20,7 @@ import FundRequestList from "./Pages/FundRequest/FundRequestList";
 import ActivateUser from "./Pages/ActivateUser";
 import DeactivateUser from "./Pages/DeactivateUser";
 import ResumeUser from "./Pages/ResumeUser";
+import EditUser from "./Pages/EditUser";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("Admin_token"));
@@ -66,6 +67,7 @@ function App() {
                 <Route path="/contact" element={<ProtectedRoute><Contact /></ProtectedRoute>} />
                 <Route path="/orders" element={<ProtectedRoute><ManageOrders /></ProtectedRoute>} />
                 <Route path="/users" element={<ProtectedRoute><UserList /></ProtectedRoute>} />
+                   <Route path="/edit-user/:id" element={<EditUser />} />
                 {/* <Route path="/all-users" element={<ProtectedRoute><AllUsers /></ProtectedRoute>} /> */}
                 <Route path="/active-users" element={<ProtectedRoute><ActiveUsers /></ProtectedRoute>} />
                 <Route path="/email-unverified" element={<ProtectedRoute><UnverifiedEmails /></ProtectedRoute>} />

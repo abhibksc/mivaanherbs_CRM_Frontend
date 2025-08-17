@@ -74,6 +74,11 @@ const UserList = () => {
     { key: "joined_at", label: "Joined On" },
   ];
 
+  const handleEdit = (userId) => {
+    // open new tab with edit page
+    window.open(`/edit-user/${userId}`, "_blank");
+  };
+
   return (
     <div className="p-6 bg-white">
       <h2 className="text-2xl font-bold mb-6">
@@ -90,6 +95,7 @@ const UserList = () => {
                     {col.label}
                   </th>
                 ))}
+                <th className="py-3 px-4 border-b">Actions</th>
               </tr>
             </thead>
             <tbody className="text-gray-800">
@@ -100,6 +106,15 @@ const UserList = () => {
                       {formatValue(col.key, user[col.key])}
                     </td>
                   ))}
+                  {/* ✅ Edit button column */}
+                  <td className="py-2 px-4 border-b">
+                    <button
+                      onClick={() => handleEdit(user.userId)}
+                      className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                    >
+                      Edit
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
